@@ -50,7 +50,7 @@ const SimpleSearch = ({ allFriends, reset, searching }) => {
                 reset(false)
             }
         } // eslint-disable-next-line
-    }, [search]) 
+    }, [search])
 
     const changeFilter = (value) => {
         setPickedFilter(value)
@@ -68,7 +68,12 @@ const SimpleSearch = ({ allFriends, reset, searching }) => {
         <React.Fragment>
             <Search onChange={searchDelay} icon={<Icon24Filter />} onIconClick={filterHandler} />
             {search.length > 0 && data.length > 0 && data.map(data => <User id={data.id} friends={data} />)}
-            {filter && <Filter changeFilter={changeFilter} genderFilter={genderFilter} />}
+            {filter && <Filter
+                changeFilter={changeFilter}
+                genderFilter={genderFilter}
+                pickedFilter={pickedFilter}
+                gender={gender}
+                 />}
         </React.Fragment>
     );
 }

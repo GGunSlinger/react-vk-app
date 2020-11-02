@@ -18,7 +18,7 @@ const App = () => {
 		try {
 			authToken = await bridge.send("VKWebAppGetAuthToken", { "app_id": 7646648, "scope": "friends" })
 		} catch (err) {
-			console.log(err)
+			console.error(err)
 		}
 		const params = {
 			"order": "name",
@@ -32,7 +32,7 @@ const App = () => {
 		try {
 			userFriends = await bridge.send("VKWebAppCallAPIMethod", { "method": "friends.get", "params": { ...params } });
 		} catch (err) {
-			console.log(err)
+			console.error(err)
 		}
 
 		let totalFriends = userFriends.response.items
@@ -57,7 +57,7 @@ const App = () => {
 					{ "method": "friends.get", "params": { ...params, "user_id": totalFriends[i].id } })
 				await addFriend(friendsFromFriends.response.items)
 			} catch (err) {
-				console.log(err)
+				console.error(err)
 			}
 		}
 		setFriends(totalFriends.filter((e, index) => index < 10000))
