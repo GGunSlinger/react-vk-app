@@ -48,7 +48,7 @@ const Home = ({ id, allFriends, fetchData, popout }) => {
 			<Group title="Navigation Example">
 				<Div>
 					{!allFriends && !popout && <Button size="xl" level="2" onClick={fetchData} data-to="persik">
-						Загрузить 10 000 друзей друзей
+						Загрузить 10 000 друзей и их друзей
 					</Button>}
 				</Div>
 			</Group>
